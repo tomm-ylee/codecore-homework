@@ -34,118 +34,108 @@ function listBoards () {
   }
 }
 
-// Function to add new, blank board (as object). If already existing, say so and return out.
+// Function to add new, blank board (as object). If already existing, say so.
 
 function addBoard (boardName) {
-  for (let boardCheck in hello) {
-    if (boardName === boardCheck) {
-      console.log("Board already exists.");
-      return;
-    }
+  if (hello[boardName] === undefined) {
+    hello[boardName] = {};
+    console.log(`Board '${boardName}'' was created.`);
+  } else {
+    console.log("Board already exists.");
   }
-  hello[boardName] = {};
-  console.log(`Board '${boardName}'' was created.`);
   return;
 }
 
-// Function to delete board. If not existing, say so and return out.
+// Function to delete board. If not existing, say so.
 
 function deleteBoard (boardName) {
-  for (let boardCheck in hello) {
-    if (boardName === boardCheck) {
-      delete hello[boardName];
-      console.log(`Board '${boardName}' was removed.`);
-      return;
-    }
+  if (hello[boardName] === undefined) {
+    console.log(`Board doesn't exist.`);
+  } else {
+    delete hello[boardName];
+    console.log(`Board '${boardName}' was removed.`);
   }
-  console.log(`Board doesn't exist.`);
   return;
 }
 
 //Function to diplay an existing board, including all lists and items in list.
-//If not existing, say so and return out.
+//If not existing, say so.
 
 function displayBoard (boardName) {
-  for (let boardCheck in hello) {
-    if (boardName === boardCheck) {
-      for (let listName in hello[boardName]) {
-        console.log("-".repeat(18));
-        console.log(` ${listName}`);
-        console.log("-".repeat(18));
-        for (let cardName of hello[boardName][listName]){
-          console.log(`>  ${cardName}`);
-        }
-      }
+  if (hello[boardName] === undefined) {
+    console.log(`Board doesn't exist.`);
+  } else {
+    for (let listName in hello[boardName]) {
       console.log("-".repeat(18));
-      return;
+      console.log(` ${listName}`);
+      console.log("-".repeat(18));
+      for (let cardName of hello[boardName][listName]){
+        console.log(`>  ${cardName}`);
+      }
     }
+    console.log("-".repeat(18));
   }
-  console.log(`Board doesn't exist.`);
   return;
 }
 
 // Function to create a new, blank list (as an array) in board as named in first
 // argument. If board doesn't exist or list already exists within that board,
-// say so and return out of function.
+// say so.
 
 function createList (boardName, listName) {
-  for (let boardCheck in hello) {
-    if (boardName === boardCheck) {
-      for (let listCheck in hello[boardName]) {
-        if (listName === listCheck) {
-          console.log("List name already exists.");
-          return;
-        }
-      }
-      hello[boardName][listName] = [];
-      console.log(`List was created.`);
-      return
-    }
+  if (hello[boardName] === undefined) {
+    console.log(`Board doesn't exist.`);
+    return;
   }
-  console.log(`Board doesn't exist.`);
+
+  if (hello[boardName][listName] === undefined) {
+    hello[boardName][listName] = [];
+    console.log(`List was created.`);
+    return;
+  }
+
+  console.log("List name already exists.");
   return;
 }
 
 // Function to create a new card (as a string) in list of board, as
 // specified in first two argument. If board or list doesn't exist, or card
-// already exists within that board, say so and return out of function.
+// already exists within that board, say so.
 
 function createCard (boardName, listName, cardName) {
-  for (let boardCheck in hello) {
-    if (boardName === boardCheck) {
-      for (let listCheck in hello[boardName]) {
-        if (listName === listCheck) {
-          hello[boardName][listName].push(cardName);
-          console.log("Card added.");
-          return;
-        }
-      }
-      console.log(`List doesn't exist in board.`);
-      return
-    }
+  if (hello[boardName] === undefined) {
+    console.log(`Board doesn't exist.`);
+    return;
   }
-  console.log(`Board doesn't exist.`);
+
+  if (hello[boardName][listName] === undefined) {
+    console.log(`List doesn't exist in board.`);
+    return;
+  }
+
+  hello[boardName][listName].push(cardName);
+  console.log("Card added.");
+
   return;
-}
+  }
 
 // Function to delete a list within a board. If neither exist, say so and
 // return out of function.
 
 function removeList (boardName, listName) {
-  for (let boardCheck in hello) {
-    if (boardName === boardCheck) {
-      for (let listCheck in hello[boardName]) {
-        if (listName === listCheck) {
-          delete hello[boardName][listName];
-          console.log("List was removed");
-          return;
-        }
-      }
-      console.log(`List doesn't exist.`);
-      return
-    }
+  if (hello[boardName] === undefined) {
+    console.log(`Board doesn't exist.`);
+    return;
   }
-  console.log(`Board doesn't exist.`);
+
+  if (hello[boardName][listName] === undefined) {
+    console.log(`List doesn't exist.`);
+    return;
+  }
+
+  delete hello[boardName][listName];
+  console.log("List was removed");
+
   return;
 }
 
@@ -153,21 +143,20 @@ function removeList (boardName, listName) {
 // exist, say so and return out of function.
 
 function removeCard (boardName, listName, cardIndex) {
-  for (let boardCheck in hello) {
-    if (boardName === boardCheck) {
-      for (let listCheck in hello[boardName]) {
-        if (listName === listCheck) {
-          fullList = hello[boardName][listName]
-          hello[boardName][listName] = fullList.slice(0, cardIndex).concat(fullList.slice(cardIndex, fullList.length-1));
-          console.log("Card was removed");
-          return;
-        }
-      }
-      console.log(`List doesn't exist.`);
-      return
-    }
+  if (hello[boardName] === undefined) {
+    console.log(`Board doesn't exist.`);
+    return;
   }
-  console.log(`Board doesn't exist.`);
+
+  if (hello[boardName][listName] === undefined) {
+    console.log(`List doesn't exist.`);
+    return;
+  }
+
+  fullList = hello[boardName][listName]
+  hello[boardName][listName] = fullList.slice(0, cardIndex).concat(fullList.slice(cardIndex+1, fullList.length));
+
+  console.log("Card was removed");
   return;
 }
 
@@ -187,6 +176,7 @@ function moveCard (boardName, fromList, toList, fromCardIndex, toCardIndex) {
 
   if (hello[boardName][fromList][fromCardIndex] === undefined) {
     console.log(`Card doesn't exist at index.`);
+    return;
   }
 
   hello[boardName][toList][toCardIndex] = hello[boardName][fromList][fromCardIndex];
@@ -198,13 +188,14 @@ function moveCard (boardName, fromList, toList, fromCardIndex, toCardIndex) {
   return;
 }
 
-
-// addBoard("New Board");
-// deleteBoard("Dreams");
-// createList("Dreams", "Death List")
-// createCard("Dreams", "Death List", "Batman")
-// removeList("Dreams", "Bunk List")
-// removeCard("Tester Board", "Doing", 1);
-// removeCard("Tester Board", "Doing", 1);
-moveCard("Tester Board", "Doing", "Done", 2, 1);
 displayBoard("Tester Board");
+addBoard("New Board");
+deleteBoard("Dream");
+createList("Dreams", "Death List")
+createCard("Dreams", "Death List", "Batman")
+removeList("Dreams", "Bunk List")
+removeCard("Tester Board", "Doing", 1);
+removeCard("Tester Board", "Doing", 1);
+moveCard("Tester Board", "Doing", "Done", 1, 1);
+displayBoard("Tester Board");
+listBoards()

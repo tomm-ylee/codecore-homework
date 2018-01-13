@@ -149,9 +149,33 @@ function removeList (boardName, listName) {
   return;
 }
 
+// Function to delete a card by the index of a list. If neither board or list
+// exist, say so and return out of function.
+
+function removeCard (boardName, listName, cardIndex) {
+  for (boardCheck in hello) {
+    if (boardName === boardCheck) {
+      for (listCheck in hello[boardName]) {
+        if (listName === listCheck) {
+          fullList = hello[boardName][listName]
+          hello[boardName][listName] = fullList.slice(0, cardIndex).concat(fullList.slice(cardIndex, fullList.length-1));
+          console.log("Card was removed");
+          return;
+        }
+      }
+      console.log(`List doesn't exist.`);
+      return
+    }
+  }
+  console.log(`Board doesn't exist.`);
+  return;
+}
+
 // addBoard("New Board");
 // deleteBoard("Dreams");
-createList("Dreams", "Death List")
-createCard("Dreams", "Death List", "Batman")
-removeList("Dreams", "Bunk List")
-displayBaord("Dreams");
+// createList("Dreams", "Death List")
+// createCard("Dreams", "Death List", "Batman")
+// removeList("Dreams", "Bunk List")
+removeCard ("Tester Board", "Doing", 1);
+// removeCard ("Tester Board", "Doing", 1);
+displayBaord("Tester Board");

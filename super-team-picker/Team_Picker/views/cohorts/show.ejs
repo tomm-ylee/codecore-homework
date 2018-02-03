@@ -1,0 +1,38 @@
+<%- include('../partials/header') %>
+    <h1><%= thisCohort.cohort_name %></h1>
+      <div class="container card" style="width: 18rem">
+        <% if(thisCohort.logo_url) { %>
+          <img class="card-img-top" src="<%= thisCohort.logo_url %>"/></p>
+        <% } %>
+
+        <h5><%= thisCohort.cohort_name %></h5>
+        <p><%= thisCohort.members %></p>
+
+        <form>
+          <div class="container">
+            <p>Method</p>
+            <input type="radio" name="methodType" value="teamCount" id="teamCountMethod">
+            <label for="teamNumMethod">Team Count</label> <br/>
+
+            <input type="radio" name="methodType" value="memberCount" id="memberCountMethod">
+            <label for="memberCountMethod">Number Per Team</label><br/>
+
+            <p>Quantity</p>
+            <input type="text" name="quantity" id="quantity"> <br/>
+
+            <input type="submit" value="Assign Teams">
+          </div>
+        </form>
+
+        <% if(allTeams) { %>
+          <% for (let i = 0; i < allTeams.length; i += 1) { %>
+            <div class="container">
+              <h5> Team <%= i + 1 %> </h5>
+              <p> <%= allTeams[i].join(', ') %> </p>
+            </div>
+          <% } %>
+        <% } %>
+
+      </div>
+
+<%- include('../partials/footer') %>

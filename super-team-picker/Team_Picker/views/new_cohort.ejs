@@ -1,5 +1,26 @@
 <%- include('./partials/header') %>
     <h1>New Cohort</h1>
 
+    <form method="post">
+      <div>
+        <label for="logoUrl">Logo Url</label>
+        <br/>
+        <input type="text" name="logoUrl">
+        <br/>
+      </div>
+      <div>
+        <label for="cohortName">Name</label>
+        <br/>
+        <input type="text" name="cohortName">
+        <br/>
+      </div>
+      <div>
+        <label for="members">Members</label>
+         <br/>
+        <textarea name="members" rows="10" cols="50"> </textarea>
+      </div>
 
+      <input class="btn btn-outline-primary" type="submit" value="Submit">
+
+    </form>
 <%- include('./partials/footer') %>

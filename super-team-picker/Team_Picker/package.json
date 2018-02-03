@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "nodemon ./bin/www",
+    "db:create": "createdb --echo teamPicker_dev",
+    "db:drop": "drop --echo --if-exists teamPicker_dev"
+
   },
   "dependencies": {
     "body-parser": "~1.18.2",

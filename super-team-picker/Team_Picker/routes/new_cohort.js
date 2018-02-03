@@ -5,7 +5,7 @@ const knex = require('../db');
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index');
+  res.render('new_cohort');
 });
 
 module.exports = router;

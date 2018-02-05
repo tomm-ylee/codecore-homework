@@ -3,16 +3,16 @@ const router = express.Router();
 
 const knex = require('../db');
 
-// new_cohort#GET
+// PATH: /new_cohort VERB: GET
 router.get('/', (req, res) => {
   res.render('new_cohort');
 });
 
-// new_cohort#POST
+// PATH: /new_cohort VERB: POST
 router.post('/', (req, res) => {
   const logoUrl = req.body.logoUrl;
   const cohortName = req.body.cohortName;
-  const members = req.body.members.replace(/,\s+/g, ',');
+  const members = req.body.members.replace(/\s+,/g, ',').replace(/,\s+|,/g, ', ');
 
   knex
   .insert({

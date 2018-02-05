@@ -1,15 +1,23 @@
 <%- include('./partials/header') %>
-    <h1>Cohorts</h1>
-    <% for(let cohort of allCohorts) { %>
-      <div class="container card" style="width: 18rem">
-        <% if(cohort.logo_url) { %>
-          <img class="card-img-top" src="<%= cohort.logo_url %>"/></p>
-        <% } %>
-
-        <h5><%= cohort.cohort_name %></h5>
-        <p><%= cohort.members %></p>
-        <a href="/cohorts/<%=cohort.id%>" class="btn btn-primary">Show Cohort</a>
-      </div>
+  <h1>Cohorts</h1>
+  <div>
+    <% if (allCohorts.length === 0) { %>
+      <p> No cohorts saved </p>
     <% } %>
 
+    <% for(let cohort of allCohorts) { %>
+      <div class="col container card">
+        <div class="row title">
+          <% if(cohort.logo_url) { %>
+            <img class="img-thumbnail" src="<%= cohort.logo_url %>" /></p>
+          <% } %>
+
+          <h5><%= cohort.cohort_name %></h5>
+        </div>
+        <p><%= cohort.members %></p>
+        <a href="/cohorts/<%=cohort.id%>" class="btn btn-primary" >Show Cohort</a>
+
+      </div>
+    <% } %>
+  </div>
 <%- include('./partials/footer') %>

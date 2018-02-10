@@ -1,0 +1,1177 @@
+  [1m[35m (11.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (23.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1580729715615622215)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreatePosts (20180210010015)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (16.9ms)[0m  [1m[35mCREATE TABLE "posts" ("id" bigserial primary key, "title" character varying, "body" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180210010015"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-02-10 01:01:04.069701"], ["updated_at", "2018-02-10 01:01:04.069701"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1580729715615622215)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Pepper"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Harvey"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Harvey"], ["LIMIT", 1]]
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Harvey"], ["body", "Can somebody just let me out of here? If I die in a cage I lose a bet."], ["created_at", "2018-02-10 01:08:19.915024"], ["updated_at", "2018-02-10 01:08:19.915024"]]
+  [1m[35m (9.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Sasha"], ["LIMIT", 1]]
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Sasha"], ["body", "I hate to break it to you, but what people call 'love' is just a chemical reaction that compels animals to breed. It hits hard Morty then it slowly fades leaving you stranded in a failing marriage. I did it. Your parents are going to do it. Break the cycle Morty, rise above, focus on science."], ["created_at", "2018-02-10 01:08:19.931107"], ["updated_at", "2018-02-10 01:08:19.931107"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Buster"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Buster"], ["body", "It's fine, everything is fine. Theres an infinite number of realities Morty and in a few dozen of those I got lucky and turned everything back to normal."], ["created_at", "2018-02-10 01:08:19.938214"], ["updated_at", "2018-02-10 01:08:19.938214"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Bo"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Bo"], ["body", "Well then get your shit together. Get it all together and put it in a backpack, all your shit, so it's together. ...and if you gotta take it somewhere, take it somewhere ya know? Take it to the shit store and sell it, or put it in a shit museum. I don't care what you do, you just gotta get it together... Get your shit together."], ["created_at", "2018-02-10 01:08:19.945149"], ["updated_at", "2018-02-10 01:08:19.945149"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Penny"], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Penny"], ["body", "Existence is pain to a meeseeks Jerry, and we will do anything to alleviate that pain."], ["created_at", "2018-02-10 01:08:19.951971"], ["updated_at", "2018-02-10 01:08:19.951971"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Sasha"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Bear"], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Bear"], ["body", "So what if the most meaningful day in your life was a simulation operating at minimum complexity."], ["created_at", "2018-02-10 01:08:19.962710"], ["updated_at", "2018-02-10 01:08:19.962710"]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Spike"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Lilly"], ["LIMIT", 1]]
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Lilly"], ["body", "No no, If I wanted to be sober, I wouldn’t have gotten drunk."], ["created_at", "2018-02-10 01:08:19.973590"], ["updated_at", "2018-02-10 01:08:19.973590"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Pepper"], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Pepper"], ["body", "No no, If I wanted to be sober, I wouldn’t have gotten drunk."], ["created_at", "2018-02-10 01:08:19.981463"], ["updated_at", "2018-02-10 01:08:19.981463"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Jasmine"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Teddy"], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Teddy"], ["body", "It's fine, everything is fine. Theres an infinite number of realities Morty and in a few dozen of those I got lucky and turned everything back to normal."], ["created_at", "2018-02-10 01:08:19.992103"], ["updated_at", "2018-02-10 01:08:19.992103"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Bruno"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Snickers"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Lucy"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Duke"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Missy"], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Missy"], ["body", "Existence is pain to a meeseeks Jerry, and we will do anything to alleviate that pain."], ["created_at", "2018-02-10 01:08:20.014309"], ["updated_at", "2018-02-10 01:08:20.014309"]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Ruby"], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Ruby"], ["body", "This sounds like something The One True Morty might say."], ["created_at", "2018-02-10 01:08:20.020977"], ["updated_at", "2018-02-10 01:08:20.020977"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Annie"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Max"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Honey"], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Honey"], ["body", "Little tip, Morty. Never clean DNA vials with your spit."], ["created_at", "2018-02-10 01:08:20.036214"], ["updated_at", "2018-02-10 01:08:20.036214"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Teddy"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Sugar"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Precious"], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Precious"], ["body", "Uncertainty is inherently unsustainable. Eventually, everything either is or isn't."], ["created_at", "2018-02-10 01:08:20.051081"], ["updated_at", "2018-02-10 01:08:20.051081"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Cooper"], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Cooper"], ["body", "No no, If I wanted to be sober, I wouldn’t have gotten drunk."], ["created_at", "2018-02-10 01:08:20.057397"], ["updated_at", "2018-02-10 01:08:20.057397"]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Gracie"], ["LIMIT", 1]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Gracie"], ["body", "I'm the devil. What should I do when I fail? Give myself an ice cream?"], ["created_at", "2018-02-10 01:08:20.065651"], ["updated_at", "2018-02-10 01:08:20.065651"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Bubba"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Bandit"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Dixie"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Dixie"], ["body", "This sounds like something The One True Morty might say."], ["created_at", "2018-02-10 01:08:20.076193"], ["updated_at", "2018-02-10 01:08:20.076193"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Sophie"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Sophie"], ["body", "There is no god, Summer; gotta rip that band-aid off now you'll thank me later."], ["created_at", "2018-02-10 01:08:20.080442"], ["updated_at", "2018-02-10 01:08:20.080442"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Dakota"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Ginger"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Ginger"], ["body", "Uncertainty is inherently unsustainable. Eventually, everything either is or isn't."], ["created_at", "2018-02-10 01:08:20.086545"], ["updated_at", "2018-02-10 01:08:20.086545"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Sandy"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Dixie"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Snickers"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Luna"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Snickers"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Molly"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Molly"], ["body", "Let me out, what you see is not the same person as me. My life's a lie. I'm not who you're looking. Let me out. Set me free. I'm really old. This isn't me. My real body is slowly dieing in a vat. Is anybody listening? Can anyone understand? Stop looking at me like that and actually help me. Help me. Help me I'm gunna die."], ["created_at", "2018-02-10 01:08:20.102005"], ["updated_at", "2018-02-10 01:08:20.102005"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Bear"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Duke"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Lexi"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Dakota"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Dakota"], ["body", "Listen, I'm not the nicest guy in the universe, because I'm the smartest, and being nice is something stupid people do to hedge their bets."], ["created_at", "2018-02-10 01:08:20.112687"], ["updated_at", "2018-02-10 01:08:20.112687"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Penny"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Rocky"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Rocky"], ["body", "Let me out, what you see is not the same person as me. My life's a lie. I'm not who you're looking. Let me out. Set me free. I'm really old. This isn't me. My real body is slowly dieing in a vat. Is anybody listening? Can anyone understand? Stop looking at me like that and actually help me. Help me. Help me I'm gunna die."], ["created_at", "2018-02-10 01:08:20.119579"], ["updated_at", "2018-02-10 01:08:20.119579"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Roxy"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Rocky"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Lexi"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Lexi"], ["body", "Get off the high road Summer. We all got pink eye because you wouldn't stop texting on the toilet."], ["created_at", "2018-02-10 01:08:20.127842"], ["updated_at", "2018-02-10 01:08:20.127842"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Milo"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Milo"], ["body", "Little tip, Morty. Never clean DNA vials with your spit."], ["created_at", "2018-02-10 01:08:20.132038"], ["updated_at", "2018-02-10 01:08:20.132038"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 1]]
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 2]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 3]]
+  [1m[35m (4.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 4]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 5]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 6]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 7]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 8]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 9]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 10]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 11]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 12]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 13]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 14]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 15]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 16]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 17]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 18]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 19]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 20]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 21]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 22]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 23]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Scooter"], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Scooter"], ["body", "No no, If I wanted to be sober, I wouldn’t have gotten drunk."], ["created_at", "2018-02-10 01:08:38.017108"], ["updated_at", "2018-02-10 01:08:38.017108"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Jasper"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Murphy"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Murphy"], ["body", "Nobody exists on purpose. Nobody belongs anywhere. Everybody is going to die."], ["created_at", "2018-02-10 01:08:38.024611"], ["updated_at", "2018-02-10 01:08:38.024611"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Maggie"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Sparky"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Sparky"], ["body", "I hate to break it to you, but what people call 'love' is just a chemical reaction that compels animals to breed. It hits hard Morty then it slowly fades leaving you stranded in a failing marriage. I did it. Your parents are going to do it. Break the cycle Morty, rise above, focus on science."], ["created_at", "2018-02-10 01:08:38.031005"], ["updated_at", "2018-02-10 01:08:38.031005"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Patches"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Patches"], ["body", "This sounds like something The One True Morty might say."], ["created_at", "2018-02-10 01:08:38.034992"], ["updated_at", "2018-02-10 01:08:38.034992"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Marley"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Cody"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Ruby"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Rex"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Rex"], ["body", "I'm the devil. What should I do when I fail? Give myself an ice cream?"], ["created_at", "2018-02-10 01:08:38.045709"], ["updated_at", "2018-02-10 01:08:38.045709"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Bruno"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Bruno"], ["body", "Oh yeah, If you think my Rick is Dead, then he is alive. If you think you're safe, then he's coming for you."], ["created_at", "2018-02-10 01:08:38.050128"], ["updated_at", "2018-02-10 01:08:38.050128"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Gizmo"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Gizmo"], ["body", "Get off the high road Summer. We all got pink eye because you wouldn't stop texting on the toilet."], ["created_at", "2018-02-10 01:08:38.054427"], ["updated_at", "2018-02-10 01:08:38.054427"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Cooper"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Cooper"], ["body", "Traditionally, science fairs are a father/son thing. Well, scientifically, traditions are an idiot thing."], ["created_at", "2018-02-10 01:08:38.058432"], ["updated_at", "2018-02-10 01:08:38.058432"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Precious"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Precious"], ["body", "Get off the high road Summer. We all got pink eye because you wouldn't stop texting on the toilet."], ["created_at", "2018-02-10 01:08:38.062481"], ["updated_at", "2018-02-10 01:08:38.062481"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Angel"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Penny"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Penny"], ["body", "It's fine, everything is fine. Theres an infinite number of realities Morty and in a few dozen of those I got lucky and turned everything back to normal."], ["created_at", "2018-02-10 01:08:38.069259"], ["updated_at", "2018-02-10 01:08:38.069259"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Sam"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Sam"], ["body", "Traditionally, science fairs are a father/son thing. Well, scientifically, traditions are an idiot thing."], ["created_at", "2018-02-10 01:08:38.073405"], ["updated_at", "2018-02-10 01:08:38.073405"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Peanut"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Belle"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Belle"], ["body", "Snuffles was my slave name, you can call me snowball because my fur is pretty and white."], ["created_at", "2018-02-10 01:08:38.080028"], ["updated_at", "2018-02-10 01:08:38.080028"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Brutus"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Brutus"], ["body", "Well then get your shit together. Get it all together and put it in a backpack, all your shit, so it's together. ...and if you gotta take it somewhere, take it somewhere ya know? Take it to the shit store and sell it, or put it in a shit museum. I don't care what you do, you just gotta get it together... Get your shit together."], ["created_at", "2018-02-10 01:08:38.084163"], ["updated_at", "2018-02-10 01:08:38.084163"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Sammy"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Lexi"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Lexi"], ["body", "Oh yeah, If you think my Rick is Dead, then he is alive. If you think you're safe, then he's coming for you."], ["created_at", "2018-02-10 01:08:38.090407"], ["updated_at", "2018-02-10 01:08:38.090407"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Buster"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Buster"], ["body", "You're like Hitler, except...Hitler cared about Germany, or something."], ["created_at", "2018-02-10 01:08:38.094448"], ["updated_at", "2018-02-10 01:08:38.094448"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Penny"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Dakota"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Diesel"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Diesel"], ["body", "What is my purpose. You pass butter. Oh My God. Yeah, Welcome to the club pal."], ["created_at", "2018-02-10 01:08:38.102954"], ["updated_at", "2018-02-10 01:08:38.102954"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Lucky"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Lucky"], ["body", "The first rule of space travel kids is always check out distress beacons. Nine out of ten times it's a ship full of dead aliens and a bunch of free shit! One out of ten times it's a deadly trap, but... I'm ready to roll those dice!"], ["created_at", "2018-02-10 01:08:38.106975"], ["updated_at", "2018-02-10 01:08:38.106975"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Ginger"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Snoopy"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Snoopy"], ["body", "The first rule of space travel kids is always check out distress beacons. Nine out of ten times it's a ship full of dead aliens and a bunch of free shit! One out of ten times it's a deadly trap, but... I'm ready to roll those dice!"], ["created_at", "2018-02-10 01:08:38.113356"], ["updated_at", "2018-02-10 01:08:38.113356"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Pepper"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Annie"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Annie"], ["body", "There is no god, Summer; gotta rip that band-aid off now you'll thank me later."], ["created_at", "2018-02-10 01:08:38.119912"], ["updated_at", "2018-02-10 01:08:38.119912"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Lucy"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Bella"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Bella"], ["body", "No no, If I wanted to be sober, I wouldn’t have gotten drunk."], ["created_at", "2018-02-10 01:08:38.126158"], ["updated_at", "2018-02-10 01:08:38.126158"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Bo"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Bo"], ["body", "Can somebody just let me out of here? If I die in a cage I lose a bet."], ["created_at", "2018-02-10 01:08:38.130516"], ["updated_at", "2018-02-10 01:08:38.130516"]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Molly"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Molly"], ["body", "He's not a hot girl. He can't just bail on his life and set up shop in someone else's."], ["created_at", "2018-02-10 01:08:38.135522"], ["updated_at", "2018-02-10 01:08:38.135522"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Lily"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Rex"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Murphy"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Rosie"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Rosie"], ["body", "Well then get your shit together. Get it all together and put it in a backpack, all your shit, so it's together. ...and if you gotta take it somewhere, take it somewhere ya know? Take it to the shit store and sell it, or put it in a shit museum. I don't care what you do, you just gotta get it together... Get your shit together."], ["created_at", "2018-02-10 01:08:38.146301"], ["updated_at", "2018-02-10 01:08:38.146301"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Murphy"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Abby"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Abby"], ["body", "Meeseeks are not born into this world fumbling for meaning, Jerry! We are created to serve a single purpose, for which we go to any lengths to fulfill."], ["created_at", "2018-02-10 01:08:38.153196"], ["updated_at", "2018-02-10 01:08:38.153196"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Lily"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Lily"], ["body", "Existence is pain to a meeseeks Jerry, and we will do anything to alleviate that pain."], ["created_at", "2018-02-10 01:08:38.157441"], ["updated_at", "2018-02-10 01:08:38.157441"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Annie"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Princess"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Princess"], ["body", "I hate to break it to you, but what people call 'love' is just a chemical reaction that compels animals to breed. It hits hard Morty then it slowly fades leaving you stranded in a failing marriage. I did it. Your parents are going to do it. Break the cycle Morty, rise above, focus on science."], ["created_at", "2018-02-10 01:08:38.165269"], ["updated_at", "2018-02-10 01:08:38.165269"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Oscar"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Daisy"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Bella"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Toby"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Penny"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" WHERE "posts"."title" = $1 LIMIT $2[0m  [["title", "Sophie"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Sophie"], ["body", "No no, If I wanted to be sober, I wouldn’t have gotten drunk."], ["created_at", "2018-02-10 01:08:38.180841"], ["updated_at", "2018-02-10 01:08:38.180841"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+Started GET "/" for 127.0.0.1 at 2018-02-09 17:24:28 -0800
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/railties-5.1.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/railties-5.1.4/lib/rails/templates/rails/welcome/index.html.erb (4.2ms)
+Completed 200 OK in 21ms (Views: 16.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/info/routes" for 127.0.0.1 at 2018-02-09 17:24:38 -0800
+Processing by Rails::InfoController#routes as HTML
+  Rendering /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/railties-5.1.4/lib/rails/templates/rails/info/routes.html.erb within layouts/application
+  Rendered collection of /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actionpack-5.1.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb [8 times] (9.1ms)
+  Rendered /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actionpack-5.1.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (13.5ms)
+  Rendered /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/railties-5.1.4/lib/rails/templates/rails/info/routes.html.erb within layouts/application (38.1ms)
+Completed 200 OK in 64ms (Views: 54.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-09 17:26:58 -0800
+Started GET "/" for 127.0.0.1 at 2018-02-09 17:27:08 -0800
+Started GET "/" for 127.0.0.1 at 2018-02-09 17:27:08 -0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.3ms)
+Completed 500 Internal Server Error in 202ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (File to import not found or unreadable: boostrap.
+Load paths:
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/config
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/images
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/javascripts
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/stylesheets
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actioncable-5.1.4/lib/assets/compiled
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actionview-5.1.4/lib/assets/compiled
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/node_modules):
+    4:     <title>BlogOnRails</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all' %>
+    8:     <%= javascript_include_tag 'application' %>
+    9:   </head>
+   10: 
+  
+app/assets/stylesheets/application.scss:9
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___1094059652049722607_70253095852620'
+Processing by HomeController#index as HTML
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.0ms)
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 40ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (File to import not found or unreadable: boostrap.
+Load paths:
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/config
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/images
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/javascripts
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/stylesheets
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actioncable-5.1.4/lib/assets/compiled
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actionview-5.1.4/lib/assets/compiled
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/node_modules):
+    4:     <title>BlogOnRails</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all' %>
+    8:     <%= javascript_include_tag 'application' %>
+    9:   </head>
+   10: 
+  
+app/assets/stylesheets/application.scss:9
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___1094059652049722607_70253095852620'
+Completed 500 Internal Server Error in 80ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (File to import not found or unreadable: boostrap.
+Load paths:
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/config
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/images
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/javascripts
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/stylesheets
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actioncable-5.1.4/lib/assets/compiled
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actionview-5.1.4/lib/assets/compiled
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/node_modules):
+    4:     <title>BlogOnRails</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all' %>
+    8:     <%= javascript_include_tag 'application' %>
+    9:   </head>
+   10: 
+  
+app/assets/stylesheets/application.scss:9
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___1094059652049722607_70253095852620'
+Started GET "/" for 127.0.0.1 at 2018-02-09 17:29:41 -0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (File to import not found or unreadable: bootstrap.
+Load paths:
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/config
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/images
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/javascripts
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/stylesheets
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actioncable-5.1.4/lib/assets/compiled
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actionview-5.1.4/lib/assets/compiled
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/node_modules):
+    4:     <title>BlogOnRails</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all' %>
+    8:     <%= javascript_include_tag 'application' %>
+    9:   </head>
+   10: 
+  
+app/assets/stylesheets/application.scss:9
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___1094059652049722607_70253133943660'
+Started GET "/" for 127.0.0.1 at 2018-02-09 17:37:16 -0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (File to import not found or unreadable: bootstrap.
+Load paths:
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/config
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/images
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/javascripts
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/stylesheets
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actioncable-5.1.4/lib/assets/compiled
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actionview-5.1.4/lib/assets/compiled
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/node_modules):
+    4:     <title>BlogOnRails</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all' %>
+    8:     <%= javascript_include_tag 'application' %>
+    9:   </head>
+   10: 
+  
+app/assets/stylesheets/application.scss:9
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___1094059652049722607_70253134486260'
+Started GET "/" for 127.0.0.1 at 2018-02-09 17:38:22 -0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.7ms)
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (File to import not found or unreadable: bootstrap.
+Load paths:
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/config
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/images
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/javascripts
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/stylesheets
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actioncable-5.1.4/lib/assets/compiled
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actionview-5.1.4/lib/assets/compiled
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/node_modules):
+    4:     <title>BlogOnRails</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all' %>
+    8:     <%= javascript_include_tag 'application' %>
+    9:   </head>
+   10: 
+  
+app/assets/stylesheets/application.scss:9
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___1094059652049722607_70253104003760'
+Started GET "/" for 127.0.0.1 at 2018-02-09 17:39:01 -0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.5ms)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Invalid CSS after "...ort "bootstrap"": expected "{", was ";"):
+    4:     <title>BlogOnRails</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all' %>
+    8:     <%= javascript_include_tag 'application' %>
+    9:   </head>
+   10: 
+  
+app/assets/stylesheets/application.scss:5
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___1094059652049722607_70253140158020'
+Started GET "/" for 127.0.0.1 at 2018-02-09 17:39:10 -0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+Completed 500 Internal Server Error in 43ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (File to import not found or unreadable: bootstrap.
+Load paths:
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/config
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/images
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/javascripts
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/stylesheets
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actioncable-5.1.4/lib/assets/compiled
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actionview-5.1.4/lib/assets/compiled
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/node_modules):
+    4:     <title>BlogOnRails</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all' %>
+    8:     <%= javascript_include_tag 'application' %>
+    9:   </head>
+   10: 
+  
+app/assets/stylesheets/application.scss:2
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___1094059652049722607_70253133268060'
+Started GET "/" for 127.0.0.1 at 2018-02-09 17:39:26 -0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (File to import not found or unreadable: bootstrap.
+Load paths:
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/config
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/images
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/javascripts
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/stylesheets
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actioncable-5.1.4/lib/assets/compiled
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actionview-5.1.4/lib/assets/compiled
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/node_modules):
+    4:     <title>BlogOnRails</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all' %>
+    8:     <%= javascript_include_tag 'application' %>
+    9:   </head>
+   10: 
+  
+app/assets/stylesheets/application.scss:7
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___1094059652049722607_70253136973180'
+Started GET "/" for 127.0.0.1 at 2018-02-09 17:45:34 -0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.3ms)
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (File to import not found or unreadable: bootstrap-sprockets.
+Load paths:
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/config
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/images
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/javascripts
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/stylesheets
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actioncable-5.1.4/lib/assets/compiled
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actionview-5.1.4/lib/assets/compiled
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/node_modules):
+    4:     <title>BlogOnRails</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all' %>
+    8:     <%= javascript_include_tag 'application' %>
+    9:   </head>
+   10: 
+  
+app/assets/stylesheets/application.scss:7
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___1094059652049722607_70253137287120'
+Started GET "/" for 127.0.0.1 at 2018-02-09 17:46:23 -0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (File to import not found or unreadable: bootstrap.
+Load paths:
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/config
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/images
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/javascripts
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/stylesheets
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actioncable-5.1.4/lib/assets/compiled
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actionview-5.1.4/lib/assets/compiled
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/node_modules):
+    4:     <title>BlogOnRails</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all' %>
+    8:     <%= javascript_include_tag 'application' %>
+    9:   </head>
+   10: 
+  
+app/assets/stylesheets/application.scss:7
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___1094059652049722607_70253137499720'
+Started GET "/" for 127.0.0.1 at 2018-02-09 17:46:45 -0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+Completed 500 Internal Server Error in 63ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (couldn't find file 'turbolinks' with type 'application/javascript'
+Checked in these paths: 
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/config
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/images
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/javascripts
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/stylesheets
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actioncable-5.1.4/lib/assets/compiled
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actionview-5.1.4/lib/assets/compiled
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/node_modules):
+    4:     <title>BlogOnRails</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all' %>
+    8:     <%= javascript_include_tag 'application' %>
+    9:   </head>
+   10: 
+  
+app/assets/javascripts/application.js:2
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___1094059652049722607_70253096076620'
+Started GET "/" for 127.0.0.1 at 2018-02-09 17:48:46 -0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.3ms)
+Completed 500 Internal Server Error in 33ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (File to import not found or unreadable: bootstrap.
+Load paths:
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/config
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/images
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/javascripts
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/stylesheets
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actioncable-5.1.4/lib/assets/compiled
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actionview-5.1.4/lib/assets/compiled
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/node_modules):
+    4:     <title>BlogOnRails</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all' %>
+    8:     <%= javascript_include_tag 'application' %>
+    9:   </head>
+   10: 
+  
+app/assets/stylesheets/application.scss:2
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___1094059652049722607_70253138320960'
+Started GET "/" for 127.0.0.1 at 2018-02-09 17:49:54 -0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.3ms)
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (File to import not found or unreadable: bootstrap.
+Load paths:
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/config
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/images
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/javascripts
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/stylesheets
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actioncable-5.1.4/lib/assets/compiled
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actionview-5.1.4/lib/assets/compiled
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/node_modules):
+    4:     <title>BlogOnRails</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all' %>
+    8:     <%= javascript_include_tag 'application' %>
+    9:   </head>
+   10: 
+  
+app/assets/stylesheets/application.scss:2
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___1094059652049722607_70253138550660'
+Started GET "/" for 127.0.0.1 at 2018-02-09 17:50:03 -0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (File to import not found or unreadable: bootstrap.
+Load paths:
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/config
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/images
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/javascripts
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/stylesheets
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actioncable-5.1.4/lib/assets/compiled
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actionview-5.1.4/lib/assets/compiled
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/node_modules):
+    4:     <title>BlogOnRails</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all' %>
+    8:     <%= javascript_include_tag 'application' %>
+    9:   </head>
+   10: 
+  
+app/assets/stylesheets/application.scss:2
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___1094059652049722607_70253138877280'
+Started GET "/" for 127.0.0.1 at 2018-02-09 17:51:54 -0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (File to import not found or unreadable: bootstrap.
+Load paths:
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/config
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/images
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/javascripts
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/stylesheets
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actioncable-5.1.4/lib/assets/compiled
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actionview-5.1.4/lib/assets/compiled
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/node_modules):
+    4:     <title>BlogOnRails</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all' %>
+    8:     <%= javascript_include_tag 'application' %>
+    9:   </head>
+   10: 
+  
+app/assets/stylesheets/application.scss:1
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___1094059652049722607_70253139039280'
+Started GET "/" for 127.0.0.1 at 2018-02-09 17:53:18 -0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (File to import not found or unreadable: bootstrap.
+Load paths:
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/config
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/images
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/javascripts
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/stylesheets
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actioncable-5.1.4/lib/assets/compiled
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actionview-5.1.4/lib/assets/compiled
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/node_modules):
+    4:     <title>BlogOnRails</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all' %>
+    8:     <%= javascript_include_tag 'application' %>
+    9:   </head>
+   10: 
+  
+app/assets/stylesheets/application.scss:1
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___1094059652049722607_70253137417220'
+Started GET "/" for 127.0.0.1 at 2018-02-09 18:02:54 -0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.3ms)
+Completed 500 Internal Server Error in 33ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (couldn't find file 'turbolinks' with type 'application/javascript'
+Checked in these paths: 
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/config
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/images
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/javascripts
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/stylesheets
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actioncable-5.1.4/lib/assets/compiled
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actionview-5.1.4/lib/assets/compiled
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/node_modules):
+    4:     <title>BlogOnRails</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all' %>
+    8:     <%= javascript_include_tag 'application' %>
+    9:   </head>
+   10: 
+  
+app/assets/javascripts/application.js:2
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___1094059652049722607_70253137303900'
+Started GET "/" for 127.0.0.1 at 2018-02-09 18:03:10 -0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.3ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (couldn't find file 'jquery3' with type 'application/javascript'
+Checked in these paths: 
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/config
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/images
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/javascripts
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/stylesheets
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actioncable-5.1.4/lib/assets/compiled
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actionview-5.1.4/lib/assets/compiled
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/node_modules):
+    4:     <title>BlogOnRails</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all' %>
+    8:     <%= javascript_include_tag 'application' %>
+    9:   </head>
+   10: 
+  
+app/assets/javascripts/application.js:2
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___1094059652049722607_70253137104700'
+Started GET "/" for 127.0.0.1 at 2018-02-09 18:03:39 -0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.3ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (couldn't find file 'jquery' with type 'application/javascript'
+Checked in these paths: 
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/config
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/images
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/javascripts
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/stylesheets
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actioncable-5.1.4/lib/assets/compiled
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actionview-5.1.4/lib/assets/compiled
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/node_modules):
+    4:     <title>BlogOnRails</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all' %>
+    8:     <%= javascript_include_tag 'application' %>
+    9:   </head>
+   10: 
+  
+app/assets/javascripts/application.js:2
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___1094059652049722607_70253137253460'
+Started GET "/" for 127.0.0.1 at 2018-02-09 18:07:15 -0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.6ms)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (couldn't find file 'turbolinks' with type 'application/javascript'
+Checked in these paths: 
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/config
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/images
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/javascripts
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/stylesheets
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actioncable-5.1.4/lib/assets/compiled
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actionview-5.1.4/lib/assets/compiled
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/node_modules):
+    4:     <title>BlogOnRails</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all' %>
+    8:     <%= javascript_include_tag 'application' %>
+    9:   </head>
+   10: 
+  
+app/assets/javascripts/application.js:2
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___1094059652049722607_70253134302880'
+Started GET "/" for 127.0.0.1 at 2018-02-09 18:07:30 -0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.3ms)
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (File to import not found or unreadable: bootstrap.
+Load paths:
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/config
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/images
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/javascripts
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/stylesheets
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actioncable-5.1.4/lib/assets/compiled
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actionview-5.1.4/lib/assets/compiled
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/node_modules):
+    4:     <title>BlogOnRails</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all' %>
+    8:     <%= javascript_include_tag 'application' %>
+    9:   </head>
+   10: 
+  
+app/assets/stylesheets/application.scss:1
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___1094059652049722607_70253134320240'
+Started GET "/" for 127.0.0.1 at 2018-02-09 18:08:12 -0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.3ms)
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (File to import not found or unreadable: bootstrap.
+Load paths:
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/config
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/images
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/javascripts
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/stylesheets
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actioncable-5.1.4/lib/assets/compiled
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actionview-5.1.4/lib/assets/compiled
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/node_modules):
+    4:     <title>BlogOnRails</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all' %>
+    8:     <%= javascript_include_tag 'application' %>
+    9:   </head>
+   10: 
+  
+app/assets/stylesheets/application.scss:1
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___1094059652049722607_70253096637920'
+Started GET "/" for 127.0.0.1 at 2018-02-09 18:18:39 -0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (File to import not found or unreadable: bootstrap.
+Load paths:
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/config
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/images
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/javascripts
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/stylesheets
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actioncable-5.1.4/lib/assets/compiled
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actionview-5.1.4/lib/assets/compiled
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/node_modules):
+    4:     <title>BlogOnRails</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all' %>
+    8:     <%= javascript_include_tag 'application' %>
+    9:   </head>
+   10: 
+  
+app/assets/stylesheets/application.scss:1
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___1094059652049722607_70253139034880'
+Started GET "/" for 127.0.0.1 at 2018-02-09 18:26:57 -0800
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.9ms)
+Completed 500 Internal Server Error in 216ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (File to import not found or unreadable: require_tree.
+Load paths:
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/config
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/images
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/javascripts
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/app/assets/stylesheets
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/jquery-rails-4.3.1/vendor/assets/javascripts
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actioncable-5.1.4/lib/assets/compiled
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actionview-5.1.4/lib/assets/compiled
+  /Users/tommylee/Desktop/CodeCore/Codecore-Homework/blog_on_rails/node_modules
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/popper_js-1.12.9/assets/javascripts
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/bootstrap-4.0.0/assets/stylesheets
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/bootstrap-4.0.0/assets/javascripts
+  /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/bootstrap-4.0.0/assets/stylesheets):
+    4:     <title>BlogOnRails</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all' %>
+    8:     <%= javascript_include_tag 'application' %>
+    9:   </head>
+   10: 
+  
+app/assets/stylesheets/application.scss:1
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___3696124927643217487_70362953984800'
+Started GET "/rails/info/routes" for 127.0.0.1 at 2018-02-09 18:27:01 -0800
+Processing by Rails::InfoController#routes as HTML
+  Rendering /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/railties-5.1.4/lib/rails/templates/rails/info/routes.html.erb within layouts/application
+  Rendered collection of /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actionpack-5.1.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb [9 times] (6.0ms)
+  Rendered /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/actionpack-5.1.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (6.7ms)
+  Rendered /Users/tommylee/.rvm/gems/ruby-2.5.0/gems/railties-5.1.4/lib/rails/templates/rails/info/routes.html.erb within layouts/application (26.1ms)
+Completed 200 OK in 49ms (Views: 39.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-09 18:28:50 -0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.3ms)
+Started GET "/" for 127.0.0.1 at 2018-02-09 18:28:55 -0800
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 7765ms (Views: 7762.1ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 3450ms (Views: 3445.5ms | ActiveRecord: 0.0ms)
+
+

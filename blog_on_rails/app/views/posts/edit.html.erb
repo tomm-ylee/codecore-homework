@@ -1,0 +1,20 @@
+<h1>Edit Post</h1>
+
+<%= form_for @post do |f| %>
+  <% if @post.errors.present? %>
+    <p><%= @post.errors.full_messages.join(', ') %> </p>
+  <% end %>
+
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control"%>
+  </div>
+
+  <div>
+    <%= f.label :body %>
+    <%= f.text_area :body, class: "form-control"%>
+  </div>
+
+  <%= f.submit %>
+  <%= link_to 'Cancel', post_path(@post) %>
+<% end %>

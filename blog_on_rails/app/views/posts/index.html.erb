@@ -1,0 +1,13 @@
+<h1>This Blog Right Here</h1>
+
+<% @posts.each do |post| %>
+  <div class="post-title">
+    <h2><%= post.title %></h2>
+  </div>
+  <div class="post-body"
+    <p><%= post.body %></p>
+  </div>
+  <small>Post created <%= time_ago_in_words(post.created_at) %> ago</small>
+  <%= link_to 'View', post_path(post.id) %>
+  <%= link_to 'Delete', post_path(post.id), method: :delete %>
+<% end %>

@@ -5,6 +5,14 @@ Post.destroy_all
     title: Faker::Dog.name,
     body: Faker::RickAndMorty.quote
   )
+  if p.valid?
+    rand(2..10).times.each do
+      Comment.create(
+        body: Faker::Pokemon.move,
+        post: p
+      )
+    end
+  end
 end
 
-puts "Seeded #{Post.count} posts"
+puts "Seeded #{Post.count} posts and #{Comment.count} comments"

@@ -1,5 +1,48 @@
-nav > a {
-padding: 10px;
- background-color: skyblue;
- border-radius: 4px;
+* {
+  box-sizing: border-box;
+}
+
+nav {
+  display: flex;
+  background-color: mintcream;
+  padding: 10px
+}
+
+nav {
+  a {
+    padding: 8px;
+  }
+
+  :first-child {
+    font-size: 16pt;
+  }
+
+  :not(:first-child) {
+    font-size: 14pt;
+  }
+
+  :nth-child(2) {
+    margin-left: auto;
+  }
+}
+
+div.answer-list-item a {
+  font-size: 9pt;
+}
+
+.btn {
+  margin: 25px 0 25px 0
+}
+
+.card {
+  padding: 15px 15px 2px 15px;
+  margin: 15px;
+}
+
+.card h4 {
+  color: #007bff;
+}
+.comments-link {
+  margin-left: auto;
+  font-size: 8pt;
 }

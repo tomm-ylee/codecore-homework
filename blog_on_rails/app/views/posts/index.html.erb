@@ -1,13 +1,13 @@
-<h1>This Blog Right Here</h1>
-
-<% @posts.each do |post| %>
-  <div class="post-title">
-    <h2><%= post.title %></h2>
-  </div>
-  <div class="post-body"
-    <p><%= post.body %></p>
-  </div>
-  <small>Post created <%= time_ago_in_words(post.created_at) %> ago</small>
-  <%= link_to 'View', post_path(post.id) %>
-  <%= link_to 'Delete', post_path(post.id), method: :delete %>
-<% end %>
+<div class="row">
+  <% @posts.each do |post| %>
+    <div class="card container col-lg-3 col-md-5 col-sm-10">
+      <div class="post-title">
+        <h4><%= post.title %></h4>
+      </div>
+      <div class="post-body"
+        <p><%= post.body %></p>
+      </div>
+      <%= link_to "#{post.comments.count} comment#{'s' if post.comments.count > 1}", post_path(post.id), class: "comments-link" %>
+    </div>
+  <% end %>
+</div>

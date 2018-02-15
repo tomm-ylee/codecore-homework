@@ -1,25 +1,24 @@
 <div class="post-title">
-  <h2><%= @post.title %></h2>
+  <h1><%= @post.title %></h1>
 </div>
 <div class="post-body"
   <p><%= @post.body %></p>
 </div>
-<small>Post created <%= time_ago_in_words(@post.created_at) %> ago</small>
-<%= link_to 'Edit', edit_post_path(@post.id) %>
-<%= link_to 'Delete', post_path(@post.id), method: :delete %>
+<small>Posted <%= time_ago_in_words(@post.created_at) %> ago</small><br>
+<%= link_to 'Edit', edit_post_path(@post.id), class:"btn btn-outline-primary" %>
+<%= link_to 'Delete', post_path(@post.id), class:"btn btn-outline-primary", method: :delete %>
 
-  <h3>Leave a Comment</h3>
+  <h3>Comment</h3>
   <%= form_for @comment, url: post_comments_path(@post) do |f| %>
-    <%= f.text_area :body, class: "form-control" %>
-    <%= f.submit 'Add Comment' %>
+    <%= f.text_area :body, class: "form-control", placeholder: "What's on your mind?" %>
+    <%= f.submit 'Submit', class:"btn btn-outline-primary" %>
   <% end %>
-  <h2>Comments</h2> <hr>
   <div class="answer-list">
     <div class="answer-list-item">
       <% @comments.each do |comment| %>
       <p><%= comment.body %></p>
-      <small>Comment made <%= time_ago_in_words(@post.created_at) %> ago</small>
-      <%= link_to 'Delete', comment_path(comment.id), method: :delete %>
+      <small>Commented <%= time_ago_in_words(@post.created_at) %> ago</small>
+      • <%= link_to 'Delete', comment_path(comment.id), method: :delete %>
       <hr>
       <% end %>
     </div>

@@ -6069,3 +6069,142 @@ Processing by PostsController#index as HTML
 Completed 200 OK in 144ms (Views: 112.6ms | ActiveRecord: 28.0ms)
 
 
+Started GET "/" for 127.0.0.1 at 2018-02-15 09:22:15 -0800
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 78]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 78]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 77]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 77]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 76]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 76]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 75]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 75]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 74]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 74]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 73]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 73]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 72]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 72]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 71]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 71]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 70]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 70]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 69]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 69]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 68]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 68]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 67]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 67]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 66]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 66]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 65]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 65]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 64]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 64]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 63]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 63]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 62]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 62]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 61]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 61]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 60]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 60]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 59]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 59]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 58]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 58]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 57]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 57]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 56]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 56]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 55]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 55]]
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 54]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 54]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 53]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 53]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 52]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 52]]
+  Rendered posts/index.html.erb within layouts/application (136.4ms)
+Completed 200 OK in 578ms (Views: 524.3ms | ActiveRecord: 44.5ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2018-02-15 09:22:43 -0800
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (858.5ms)
+Completed 200 OK in 920ms (Views: 914.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2018-02-15 09:23:59 -0800
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 4291ms (Views: 4288.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-15 09:24:09 -0800
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 78]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 78]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 77]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 77]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 76]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 76]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 75]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 75]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 74]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 74]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 73]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 73]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 72]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 72]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 71]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 71]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 70]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 70]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 69]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 69]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 68]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 68]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 67]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 67]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 66]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 66]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 65]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 65]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 64]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 64]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 63]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 63]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 62]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 62]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 61]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 61]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 60]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 60]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 59]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 59]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 58]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 58]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 57]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 57]]
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 56]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 56]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 55]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 55]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 54]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 54]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 53]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 53]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 52]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 52]]
+  Rendered posts/index.html.erb within layouts/application (85.4ms)
+Completed 200 OK in 151ms (Views: 120.4ms | ActiveRecord: 26.4ms)
+
+

@@ -1,5 +1,3 @@
-<h1>New Post</h1>
-
 <%= form_for @post do |f| %>
   <% if @post.errors.present? %>
     <p><%= @post.errors.full_messages.join(', ') %> </p>
@@ -15,5 +13,6 @@
     <%= f.text_area :body, class: "form-control"%>
   </div>
 
-  <%= f.submit %>
+  <%= f.submit class: "btn btn-outline-primary"%>
+    <%= link_to 'Cancel', root_path %>
 <% end %>

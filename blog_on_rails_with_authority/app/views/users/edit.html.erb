@@ -23,24 +23,29 @@
   <%= link_to 'Cancel', edit_user_path(@user) %>
 <% end %>
 
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#password-form">
+  Change Password
+</button>
 
-<%= form_for :password_change do |f| %>
+<div class="collapse" id="password-form">
+  <%= form_for :password_change, url: update_user_password_path  do |f| %>
 
-  <div>
-    <%= f.label "Current Password" %><br>
-    <%= f.password_field :current_password, class: "form-control"%>
-  </div>
+    <div>
+      <%= f.label "Current Password" %><br>
+      <%= f.password_field :current_password, class: "form-control"%>
+    </div>
 
-  <div>
-    <%= f.label "New Password" %><br>
-    <%= f.password_field :password, class: "form-control"%>
-  </div>
+    <div>
+      <%= f.label "New Password" %><br>
+      <%= f.password_field :password, class: "form-control"%>
+    </div>
 
-  <div>
-    <%= f.label "New Password Confirmation"  %><br>
-    <%= f.password_field :password_confirmation, class: "form-control"%>
-  </div>
-  <%= f.submit 'Update Password', class: "btn btn-outline-primary"%>
-  <%= link_to 'Cancel', edit_user_path(@user) %>
+    <div>
+      <%= f.label "New Password Confirmation"  %><br>
+      <%= f.password_field :password_confirmation, class: "form-control"%>
+    </div>
+    <%= f.submit 'Update Password', class: "btn btn-outline-primary"%>
+    <%= link_to 'Cancel', edit_user_path(@user) %>
 
-<% end %>
+  <% end %>
+<div>

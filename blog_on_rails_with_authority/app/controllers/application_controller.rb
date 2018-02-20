@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   def authenticate_user!
     unless current_user.present?
       flash[:alert] = 'Sign in first, bro'
-      redirect_to new_user_path
+      redirect_to new_session_path
     end
   end
 end

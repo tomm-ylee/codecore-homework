@@ -1,6 +1,9 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :find_post, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_user!, only: [:edit, :update, :destroy]
+
+
   def new
     @post = Post.new
   end
@@ -31,7 +34,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update post_params
-      redirect_to post_path(@post.id)
+      redirect_to post_path @post.id
     else
       render :edit
     end
@@ -50,5 +53,12 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :body)
+  end
+
+  def authorize_user!
+    unless can?(:manage, @post)
+      flash[:alert] = "Access Denied"
+      redirect_to post_path @post
+    end
   end
 end

@@ -10,29 +10,37 @@
 
   <body>
 
-    <nav class="nav-bar">
-      <%= link_to 'Blog On Rails', root_path, class: "nav-logo" %>
-      <%= link_to 'Home', root_path %>
-      <%= link_to 'New Post', new_post_path %>
-      <% if current_user.present?%>
-        <%= link_to "#{current_user.first_name}", edit_user_path(current_user.id) %>
-        <%= link_to 'Sign Out', session_path, method: :delete %>
-      <% else %>
-        <%= link_to 'Sign In', new_session_path %>
-        <%= link_to 'Sign Up', new_user_path %>
-      <% end %>
+    <nav class="nav-bar navbar-expand-sm">
+      <%= link_to 'Blog On Rails', root_path, id: "nav-logo" %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+          <span class="navbar-toggler-icon">🔽</span>
+        </button>
+
+      <div id="navbarNav" class="collapse navbar-collapse">
+        <div class="navbar-nav">
+          <%= link_to 'Home', root_path %>
+          <%= link_to 'New Post', new_post_path %>
+          <% if current_user.present?%>
+            <%= link_to "#{current_user.first_name}", edit_user_path(current_user.id) %>
+            <%= link_to 'Sign Out', session_path, method: :delete %>
+          <% else %>
+            <%= link_to 'Sign In', new_session_path %>
+            <%= link_to 'Sign Up', new_user_path %>
+          <% end %>
+        </div>
+      </div>
     </nav>
     <div class="container-fluid webpage-container">
-    <% if flash[:notice] %>
-      <div class="alert alert-success" role="alert">
-        <%= flash[:notice] %>
-      </div>
-    <% end %>
-    <% if flash[:alert] %>
-      <div class="alert alert-warning" role="alert">
-        <%= flash[:alert] %>
-      </div>
-    <% end %>
+      <% if flash[:notice] %>
+        <div class="alert alert-success" role="alert">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+      <% if flash[:alert] %>
+        <div class="alert alert-warning" role="alert">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
       <%= yield %>
     </div>
   </body>

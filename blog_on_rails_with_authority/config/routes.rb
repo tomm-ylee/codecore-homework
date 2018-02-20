@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, except: [:show]
+  post('user/:id/update_password', to:'users#update_pass', as: :update_user_password)
 
   resource :session, only: [:new, :edit, :create, :destroy]
 

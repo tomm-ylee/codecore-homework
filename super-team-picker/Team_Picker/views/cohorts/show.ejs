@@ -1,0 +1,53 @@
+<%- include('../partials/header') %>
+    <h1><%= thisCohort.cohort_name %></h1>
+      <div class="container card" style="width: 48rem">
+        <% if(thisCohort.logo_url) { %>
+          <img class="card-img-top" src="<%= thisCohort.logo_url %>"/></p>
+        <% } %>
+        <form action="/cohorts/<%=thisCohort.id%>/updateUrl" method="post">
+          <input class="btn btn-primary" type="submit" value="Update Logo">
+          <input class="input-text" type="text" name="logoUrl">
+        </form>
+
+         <form action="/cohorts/<%=thisCohort.id%>/delete" method="post">
+          <input class="btn btn-primary" type="submit" value="Delete Cohort">
+        </form>
+
+        <h5><%= thisCohort.cohort_name %> </h5>
+        <p><%= thisCohort.members %></p>
+
+        <form>
+          <p>Method</p>
+          <div class="row ratio-buttons">
+            <div class="col">
+              <input
+                type="radio" name="methodType" value="teamCount" id="teamCountMethod"
+                <% if (methodType === "teamCount") { %> checked <% } %>>
+              <label for="teamNumMethod">Team Count</label> <br/>
+            </div>
+            <div class="col">
+              <input
+                type="radio" name="methodType" value="memberCount" id="memberCountMethod"
+                <% if (methodType === "memberCount") { %> checked <% } %>>
+              <label for="memberCountMethod">Number Per Team</label><br/>
+            </div>
+          </div>
+
+          <p>Quantity</p>
+          <input class="input-text" type="text" name="quantity" id="quantity" value="<%= quantity || "" %>"> <br/>
+
+          <input class="btn btn-primary" type="submit" value="Assign Teams">
+        </form>
+
+        <% if(allTeams) { %>
+          <% for (let i = 0; i < allTeams.length; i += 1) { %>
+            <div class="container">
+              <h5> Team <%= i + 1 %> </h5>
+              <p> <%= allTeams[i].join(', ') %> </p>
+            </div>
+          <% } %>
+        <% } %>
+
+      </div>
+
+<%- include('../partials/footer') %>

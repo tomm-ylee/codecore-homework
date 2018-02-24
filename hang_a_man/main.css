@@ -1,0 +1,62 @@
+* {
+  box-sizing: content-box;
+}
+
+h1, h2, h3, h4, h5, div {
+  font-family: sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+body.container {
+  flex-direction: column;
+  align-items: center;
+}
+
+.letter-box {
+  display: flex;
+  justify-content: center;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 5px;;
+  width: 20px;
+}
+
+.result-letter {
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px solid black;
+  font-size: 20pt;
+  padding: 2px;
+  margin: 5px;;
+  width: 30px;
+  height: 30px;
+}
+
+.result-letter.space {
+  border-bottom: none;
+}
+
+#alphabet-container {
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.highlight {
+  border: 2px solid grey;
+}
+
+.guessed {
+  background-color: red;
+  color: blue;
+}
+
+#gallow-img {
+  height: 300px;
+  width: auto;
+}

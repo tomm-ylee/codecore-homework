@@ -40,7 +40,7 @@ class UsersController < ApplicationController
         flash[:alert] = "New password cannot be the same as current password"
       elsif passwords[:password].length < 6
         flash[:alert] = "Password needs to be at least 6 characters"
-      elsif @user.update password: passwords[:password], password_confirmation: passwords[:password_confirmation]
+      elsif @user.update(password: passwords[:password], password_confirmation: passwords[:password_confirmation])
         flash[:notice] = "Password updated"
       else
         flash[:alert] = "Confirmation password does not match"

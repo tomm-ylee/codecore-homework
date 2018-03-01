@@ -18,7 +18,7 @@ class Ability
     end
 
     can :manage, User do |valid_user|
-      valid_user == user 
+      valid_user == user
     end
   end
 end
